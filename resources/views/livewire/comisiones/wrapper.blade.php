@@ -5,108 +5,32 @@
         <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
   role="tablist">
   <li class="nav-item" role="presentation">
-    <a href="#tabs-home" class=" nav-link block font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-      active
-    " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
-      aria-selected="true">Home</a>
+    <a href="#tabs-generales" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-generales-tab" data-bs-toggle="pill" data-bs-target="#tabs-generales" role="tab" aria-controls="tabs-generales"
+      aria-selected="true">Información general</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a href="#tabs-profile" class="
-      nav-link
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
-      aria-controls="tabs-profile" aria-selected="false">Profile</a>
+    <a href="#tabs-integrantes" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-integrantes-tab" data-bs-toggle="pill" data-bs-target="#tabs-integrantes" role="tab" aria-controls="tabs-integrantes" aria-selected="false">
+        Integrantes
+    </a>
   </li>
   <li class="nav-item" role="presentation">
-    <a href="#tabs-messages" class="
-      nav-link
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
-      aria-controls="tabs-messages" aria-selected="false">Messages</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a href="#tabs-contact" class="
-      nav-link
-      disabled
-      pointer-events-none
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    " id="tabs-contact-tab" data-bs-toggle="pill" data-bs-target="#tabs-contact" role="tab"
-      aria-controls="tabs-contact" aria-selected="false">Contact</a>
+    <a href="#tabs-documentos" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-documentos-tab" data-bs-toggle="pill" data-bs-target="#tabs-documentos" role="tab" aria-controls="tabs-documentos" aria-selected="false">
+        Documentos
+    </a>
   </li>
 </ul>
+
 <div class="tab-content" id="tabs-tabContent">
-  <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
-    Tab 1 content
+  <div class="tab-pane fade show active" id="tabs-generales" role="tabpanel" aria-labelledby="tabs-generales-tab">
+    @livewire('comisiones.comisiones')
   </div>
-  <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
-    Tab 2 content
+  <div class="tab-pane fade" id="tabs-integrantes" role="tabpanel" aria-labelledby="tabs-integrantes-tab">
+    @livewire('comisiones.integrantes')
   </div>
-  <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
-    Tab 3 content
-  </div>
-  <div class="tab-pane fade" id="tabs-contact" role="tabpanel" aria-labelledby="tabs-contact-tab">
-    Tab 4 content
-  </div>
+  <div class="tab-pane fade" id="tabs-documentos" role="tabpanel" aria-labelledby="tabs-documentos-tab">
+    @livewire('comisiones.documentos')
 </div>
 
-        <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-            <ul class="flex flex-wrap -mb-px">
-                <li class="mr-2">
-                    <a href="#" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Profile</a>
-                </li>
-                <li class="mr-2">
-                    <a href="#" class="inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500" aria-current="page">Dashboard</a>
-                </li>
-                <li class="mr-2">
-                    <a href="#" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Settings</a>
-                </li>
-                <li class="mr-2">
-                    <a href="#" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Contacts</a>
-                </li>
-                <li>
-                    <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">Disabled</a>
-                </li>
-            </ul>
-        </div>
 
 
 

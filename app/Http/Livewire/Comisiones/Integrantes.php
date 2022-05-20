@@ -10,4 +10,9 @@ class Integrantes extends Component
     {
         return view('livewire.comisiones.integrantes');
     }
+
+    public submit()
+    {
+        $this->emmit('stepEvent', 2);
+    }
 }

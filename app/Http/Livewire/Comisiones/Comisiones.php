@@ -30,6 +30,9 @@ class Comisiones extends Component
 
     public function submit()
     {
+        $this->emmit('stepEvent', 1);
+
+        /*
         $this->validate();
 
         Comision::create([
@@ -42,6 +45,7 @@ class Comisiones extends Component
         $this->resetInputFields();
 
         session()->flash('message', 'La Comisión se creo correctamente.');
+        */
     }
 
 }
