@@ -43,7 +43,7 @@
                 <!-- Page Content -->
                 <main>
 
-                    <div class=" container-fuid">
+                    <div class="container">
                         {{ $slot }}
                     </div>
 

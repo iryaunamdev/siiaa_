@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Livewire\Comisiones\Comisiones;
-use App\Http\Livewire\Comisiones\Wrapper;
-use App\Http\Livewire\CRUDComisiones;
-use App\Http\Livewire\SHOWComisiones;
+use App\Http\Livewire\Comisiones\Crud;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +30,5 @@ Route::middleware([
 
 //Modulo Comisiones
 Route::group(['prefix' => 'comisiones'], function(){
-    Route::get('/', Wrapper::class)->name('comisiones');
+    Route::get('/', Crud::class)->middleware('auth')->name('comisiones');
 });
-
-//Route::get('comisiones/{id?}', CRUDComisiones::class)->middleware('auth')->name('comisiones');
-//Route::get('comisiones/{id}', SHOWcomisiones::class)->middleware('auth')->name('comisiones-show');

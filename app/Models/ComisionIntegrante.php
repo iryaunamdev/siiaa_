@@ -9,8 +9,10 @@ class ComisionIntegrante extends Model
 {
     use HasFactory;
 
+    protected $table = 'comisiones_integrantes';
+
     protected $fillable = [
-        'nombre', 'puesto',
+        'comision_id', 'nombre', 'puesto'
     ];
 
     protected $date = [

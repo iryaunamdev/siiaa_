@@ -14,7 +14,7 @@ class Comision extends Model
     protected $guarded = [];
 
     protected $fillable = [
-        'titulo', 'descripcion', 'url_local'
+        'titulo', 'contacto', 'descripcion', 'url_local',
     ];
 
     public function integrantes()

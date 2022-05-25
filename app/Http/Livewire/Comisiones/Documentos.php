@@ -10,9 +10,4 @@ class Documentos extends Component
     {
         return view('livewire.comisiones.documentos');
     }
-
-    public submit()
-    {
-        $this->emmit('stepEvent', 3);
-    }
 }

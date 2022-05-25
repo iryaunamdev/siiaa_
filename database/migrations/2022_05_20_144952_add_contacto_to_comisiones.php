@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('comisiones', function (Blueprint $table) {
-            $table->string('contacto')->nullable()->after('titulo');
+            $table->string('contacto')->after('titulo');
         });
     }
 
