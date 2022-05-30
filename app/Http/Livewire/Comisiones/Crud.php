@@ -13,11 +13,11 @@ class Crud extends Component
 
     public $titulo, $contacto, $url_local, $descripcion;
     public $comisiones, $comision_id;
-    public $isOpen;
-    public $editMode = 0;
+    public $editMode = 0; //variable global diferente al paramatro de 'editMode'
 
     public function render()
     {
+
         $this->comisiones = Comision::all();
         return view('livewire.comisiones.crud');
     }
@@ -38,6 +38,7 @@ class Crud extends Component
         $this->descripcion = $comision->descripcion;
 
         $this->editMode = true;
+        $this->emit('comisionID', $comision->id);
     }
 
     public function store()
@@ -64,10 +65,18 @@ class Crud extends Component
             $comision->save();
         }
         //dd($comision);
-        //session()->flash('message', $this->comision_id ? 'La Comision se actualizó.' : 'La Comisión se creó.');
+        session()->flash('message', $this->comision_id ? 'La Comision se actualizó.' : 'La Comisión se creó.');
 
-        $this->editMode = false;
-        $this->resetInputFields();
+        $this->emit('comisionID', $comision->id);
+
+        //$this->editMode = false;
+        //$this->resetInputFields();
+
+    }
+
+    public function editMode($editMode)
+    {
+        $this->comision_id = $editMode;
     }
 
     public function delete($id)

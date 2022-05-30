@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Comisiones\Crud;
+use App\Http\Livewire\Comisiones\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,5 @@ Route::middleware([
 //Modulo Comisiones
 Route::group(['prefix' => 'comisiones'], function(){
     Route::get('/', Crud::class)->middleware('auth')->name('comisiones');
+    //Route::get('editar/{comision_id?}', Crud::class)->middleware('auth')->name('comisiones-edit');
 });

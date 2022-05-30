@@ -23,7 +23,7 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="bg-gray-100">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -35,19 +35,22 @@
                 </header>
             @endif
 
-            <div class="flex">
+            <div class="flex flex-row">
                 <!-- Sidebar -->
-                <div class="w-60 h-screen shadow-md bg-gray-50 dark:bg-gray-800" id="sidebar">
+                <div class="basis-1/6 h-screen shadow-md bg-gray-50 dark:bg-gray-800" id="sidebar">
                     @include('layouts.sidebar')
                 </div>
                 <!-- Page Content -->
-                <main>
+                <div class="basis-5/6">
+                    <main>
 
-                    <div class="container">
-                        {{ $slot }}
-                    </div>
+                        <div class="">
+                            {{ $slot }}
+                        </div>
 
-                </main>
+                    </main>
+                </div>
+
             </div>
 
 

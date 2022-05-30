@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Integrantes extends Component
 {
+    protected $listeners = ['comisionID'];
     protected $rules = [
         'comision_id'=>'required',
         'nombre'=> 'required',
@@ -16,46 +17,46 @@ class Integrantes extends Component
     public $integrantes, $integrante_id;
     public $comision_id;
 
-
     public function render()
     {
-        $this->comision_id = 2;
         $this->integrantes = ComisionIntegrante::where('comision_id', $this->comision_id)->get();
         return view('livewire.comisiones.integrantes');
     }
 
     public function store()
     {
+        $this->validate();
+
         if($this->integrante_id)
         {
-            dd('hola');
+            $integrante = ComisionIntegrante::findOrFail($this->integrante_id);
+            $integrante->update([
+                'nombre'=> $this->nombre,
+                'puesto'=> $this->puesto,
+            ]);
         }else
         {
-            $this->comision_id = 2;
             $integrante = ComisionIntegrante::create([
                 'comision_id'=> $this->comision_id,
                 'nombre'=> $this->nombre,
                 'puesto'=> $this->puesto,
             ]);
-        }
 
-        $this->resetInputFields();
-        $this->render();
+            $integrante->save();
+        }
     }
 
     public function delete($id)
     {
-        dd($id);
+        //dd($id);
         $integrante = ComisionIntegrante::find($id)->delete();
-
         session()->flash('message', 'Integrante eliminado');
 
     }
 
-    private function resetInputFields()
+    //Listeners
+    public function comisionID($comisionID)
     {
-        $this->comision_id = '';
-        $this->nombre = '';
-        $this->puesto = '';
+        $this->comision_id = $comisionID;
     }
 }
