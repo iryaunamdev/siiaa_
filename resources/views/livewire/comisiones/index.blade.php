@@ -1,14 +1,15 @@
-<div class="py-8 px-6 sm:py-6 sm:py-4 {{ $editMode ? 'grid grid-cols-2' : '' }}">
-    @if($editMode)
-        @include('livewire.comisiones.create')
-    @else
+<div class="py-8 px-6 sm:py-6 sm:py-4">
     <div class="p-6 bg-white">
         <div class="mt-4 mb-2 text-2xl page-title">
             Comisiones locales
         </div>
         <div class="flex justify-end toolbar border border-gray-100 border-dotted">
             <div>
-                <button wire:click.prevent="create()" class="btn">Nueva Comisión</button>
+                <a href="{{route('comisiones-editar')}}" class="btn">Nueva Comisión</a>
+                {{--
+                    <button wire:click.prevent = "$emit('editComision', 0)" class="btn">Nueva Comisión</button>
+                    --}}
+
             </div>
         </div>
 
@@ -25,7 +26,10 @@
                 @foreach ($comisiones as $comision )
                     <tr>
                         <td class="border px-4 py-2">{{ $comision->id }}</td>
-                        <td class="border px-4 py-2"><button wire:click.prevent="edit({{$comision->id}})" class="">{{ $comision->titulo }}</button></td>
+                        <td class="border px-4 py-2"><a href="{{route('comisiones-editar', $comision->id)}}">{{$comision->titulo}}</a></td>
+                        {{--
+                            <td class="border px-4 py-2"><button wire:click.prevent="$emit('editComision', {{$comision->id}})" class="">{{ $comision->titulo }}</button></td>
+                            --}}
                         <td class="border px-4 py-2">
 
                         </td>
@@ -35,5 +39,4 @@
             </table>
         </div>
     </div>
-    @endif
 </div>

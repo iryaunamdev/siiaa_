@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Comisiones;
 
 use App\Models\Comision;
+use App\Models\ComisionIntegrante;
 use Livewire\Component;
 
 class Crud extends Component
@@ -12,8 +13,13 @@ class Crud extends Component
     ];
 
     public $titulo, $contacto, $url_local, $descripcion;
-    public $comisiones, $comision_id;
-    public $editMode = 0; //variable global diferente al paramatro de 'editMode'
+    public $comisiones, $comision_id, $comision;
+
+    public $integrantes, $documentos;
+
+    public $integrante_nombre, $integrante_puesto, $integrante_id;
+
+    public $editMode = 0, $editIntegrante = 0, $editDocumento=0;
 
     public function render()
     {
@@ -36,6 +42,8 @@ class Crud extends Component
         $this->contacto = $comision->contacto;
         $this->url_local = $comision->url_local;
         $this->descripcion = $comision->descripcion;
+        $this->integrantes = $comision->integrantes;
+        $this->comision = $comision;
 
         $this->editMode = true;
         $this->emit('comisionID', $comision->id);
@@ -92,6 +100,48 @@ class Crud extends Component
         $this->contacto = '';
         $this->url_local = '';
         $this->descripcion = '';
+    }
+
+    //Integrantes
+    public function addIntegrante()
+    {
+        $this->validate([
+            'integrante_nombre'=>'required',
+            'comision_id'=>'required',
+        ]);
+
+        ComisionIntegrante::updateOrCreate(['id'=> $this->integrante_id], [
+            'comision_id'=>$this->comision_id,
+            'nombre'=>$this->integrante_nombre,
+            'puesto'=>$this->integrante_puesto,
+        ]);
+
+        $this->resetIntegranteInputs();
+        $this->editIntegrante = false;
+        $this->refresh();
+
+    }
+
+    public function editIntegrante($id)
+    {
+        $integrante = ComisionIntegrante::findOrFail($id);
+        $this->integrante_id = $integrante->id;
+        $this->integrante_nombre = $integrante->nombre;
+        $this->integrante_puesto = $integrante->puesto;
+
+        $this->editIntegrante = true;
+    }
+
+    public function resetIntegranteInputs()
+    {
+        $this->integrante_nombre = '';
+        $this->integrante_puesto = '';
+        $this->integrante_id = '';
+    }
+
+    public function refresh()
+    {
+        return;
     }
 
 }
