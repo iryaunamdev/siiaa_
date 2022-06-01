@@ -9,12 +9,11 @@ class ComisionDocumento extends Model
 {
     use HasFactory;
 
-    protected $table = ['comisiones_documentos'];
+    protected $table = 'comisiones_documentos';
 
-    protected $fillable = [
-        'comision_id', 'tipo_id', 'titulo', 'fecha', 'filename',
+    protected $fillable = ['titulo', 'fecha', 'tipo_id', 'comision_id', 'filename'];
 
-    ];
+    protected $dates = ['fecha'];
 
     public function comision()
     {

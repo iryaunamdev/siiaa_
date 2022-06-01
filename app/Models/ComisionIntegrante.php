@@ -15,7 +15,7 @@ class ComisionIntegrante extends Model
         'comision_id', 'nombre', 'puesto'
     ];
 
-    protected $date = [
+    protected $dates = [
         'fecha'
     ];
 
